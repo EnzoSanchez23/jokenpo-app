@@ -1,23 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+function JogadaBOT() {
+  const jogadas = ['Pedra', 'Papel', 'Tesoura'];
+  var bot = jogadas[Math.floor(Math.random() * jogadas.length)]
+  console.log("Jogada do BOT:" + bot);
+  return bot;
+}
+
+function jogadaPlayer(jogada){
+  const bot = JogadaBOT();
+
+  if(jogada === bot){
+    console.log("Empate");
+  }
+
+  else if( (jogada === "Pedra" && bot === "Tesoura") || (jogada === "Papel" && bot === "Pedra") || (jogada === "Tesoura" && bot === "Papel")){
+    console.log("Vitoria do Jogador");
+  }
+  else{
+    console.log("Vitoria do BOT");
+  }
+
+}
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <button onClick={()=>jogadaPlayer("Pedra")} >Pedra</button>
+      <button onClick={()=>jogadaPlayer("Papel")} >Papel</button>
+      <button onClick={()=>jogadaPlayer("Tesoura")} >Tesoura</button>
     </div>
   );
 }
